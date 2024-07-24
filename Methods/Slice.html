@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Excerpt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .post {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .excerpt {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="post">
+        <h1>Understanding JavaScript's `slice()` Method</h1>
+        <p id="content"></p>
+        <button onclick="showFullContent()">Read More</button>
+    </div>
+
+    <script>
+        const content = `The slice() method returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) where start and end represent the index of items in that array. The original array will not be modified. This method allows for the extraction of subarrays or substrings, which can be useful in many scenarios such as pagination, displaying previews, or simply manipulating arrays and strings. In JavaScript, slice() can be applied to both arrays and strings.`;
+
+        const contents =document.getElementById("content")
+        const showFullContent =()=>{
+           
+            contents.textContent = content
+        }
+
+         // Show excerpt initially
+         // // Show excerpt initially
+         const excerpt =content.slice(0,100) + "..."
+  
+        
+         contents.textContent = excerpt
+    </script>
+</body>
+</html>

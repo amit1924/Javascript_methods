@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .user-list {
+            list-style: none;
+            padding: 0;
+        }
+        .user-list li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Search</h1>
+    <input type="text" id="searchInput" placeholder="Enter username to search..." class="search-box" oninput="searchUser()">
+    <ul id="userList" class="user-list"></ul>
+
+    <script>
+        const users = [
+            { id: 1, username: 'alice', name: 'Alice Johnson' },
+            { id: 2, username: 'bob', name: 'Bob Smith' },
+            { id: 3, username: 'carol', name: 'Carol Davis' }
+        ];
+
+
+       /* const user =users.map((user)=>{
+            return user.username
+        })
+        
+        console.log(user);*/
+
+ const displayUsers =(userArray)=>{
+    const userList = document.getElementById('userList');
+    userList.innerHTML = ''; 
+    userArray.forEach(user => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${user.name} (@${user.username})`;
+        userList.appendChild(listItem);
+    });
+
+ }
+
+ const searchUser =()=>{
+   const searchInput =document.getElementById('searchInput').value.toLowerCase();
+
+ const user =users.find((user)=>{
+   
+    return user.username === searchInput
+ })
+
+ if(user){
+    displayUsers([user])
+ }
+else{
+     document.getElementById('userList').innerHTML = '<li>User not found</li>';
+}
+ }
+
+
+      
+ 
+
+//displayUsers(users)
+    </script>
+</body>
+</html>

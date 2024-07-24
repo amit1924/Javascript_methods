@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .user-list {
+            list-style: none;
+            padding: 0;
+        }
+        .user-list li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Profiles</h1>
+    <ul id="userList" class="user-list"></ul>
+    <button onclick="updateEmail(2, 'newemail@example.com')">Update Email for User 2</button>
+
+    <script>
+        const users = [
+            { id: 1, name: 'John Doe', email: 'john@example.com' },
+            { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+            { id: 3, name: 'Mike Johnson', email: 'mike@example.com' }
+        ];
+
+        function displayUsers() {
+            const userList = document.getElementById('userList');
+            userList.innerHTML = ''; // Clear previous list
+            users.forEach(user => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${user.name}: ${user.email}`;
+                userList.appendChild(listItem);
+            });
+        }
+
+        function updateEmail(userId, newEmail) {
+            const index = users.findIndex(user => user.id === userId);
+            if (index !== -1) {
+                users[index].email = newEmail;
+                displayUsers();
+            }
+        }
+
+        displayUsers();
+    </script>
+</body>
+</html>

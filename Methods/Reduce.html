@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Total</title>
+ <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    h1 {
+        color: #4CAF50;
+    }
+    
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    li {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+    }
+    
+    #totalPrice {
+        font-size: 1.2em;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    
+    
+ </style>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <ul id="cartItems">
+      
+    </ul>
+    <div id="totalPrice"></div>
+
+   <script>
+    const cart = [
+    { name: 'Apple', price: 1.2 },
+    { name: 'Banana', price: 0.8 },
+    { name: 'Cherry', price: 2.5 },
+    { name: 'Date', price: 3.0 }
+];
+
+function displayCartItems() {
+    const cartItems = document.getElementById('cartItems');
+    cart.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.name}: $${item.price.toFixed(2)}`;
+        cartItems.appendChild(listItem);
+    });
+}
+
+function calculateTotal() {
+    const totalPrice = document.getElementById('totalPrice');
+    const total = cart.reduce((accumulator, item) => accumulator + item.price, 0);
+    totalPrice.textContent = `Total Price: $${total.toFixed(2)}`;
+}
+
+
+displayCartItems()
+calculateTotal();
+
+   </script>
+
+
+</body>
+</html>
+
+
+<!-- array.reduce((accumulator, item) => accumulator + item.price, initialValue);
+ -->

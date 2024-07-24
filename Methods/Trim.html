@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            padding: 10px;
+            border: none;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" placeholder="Enter your message"></textarea>
+            </div>
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+        <div id="output"></div>
+    </div>
+    <script >
+        const submitForm =()=>{
+            const nameInput =document.getElementById("name")
+            const messageInput =document.getElementById("message")
+
+            // Trim the input values
+
+            const name =nameInput.value.trim();
+            const message =messageInput.value.trim();
+
+            // Validate the input
+            if(name==="" || message===""){
+                alert('Please fill out both fields.')
+                return
+            }
+
+             //Display the output
+        const output =document.getElementById("output")
+        output.textContent=`Name: ${name} ,Message: ${message}`
+
+
+        //clear the form fields
+        nameInput.value=''
+        messageInput.value=''
+        
+        }
+
+       
+
+        
+    </script>
+</body>
+</html>
+
+
+<!-- Uses of trim()
+Input Validation:
+
+Sanitize User Input: When accepting input from users (e.g., in forms), users might accidentally include spaces before or after their input. Using trim() ensures that the input is clean and free from unwanted spaces.
+Consistent Data Storage: Trimming input before storing it in a database ensures that data is consistent and uniform.
+String Comparison:
+
+Accurate Comparisons: When comparing strings, leading or trailing whitespace can cause mismatches. Using trim() ensures that only the actual content is compared, not the surrounding whitespace.
+Improved User Experience:
+
+Prevent Errors: Trimming user input can prevent errors in further processing, such as searching, matching, or manipulating the string.
+
+Form Validation: In form validation, trim() helps in checking if a field is genuinely empty or just filled with spaces. -->

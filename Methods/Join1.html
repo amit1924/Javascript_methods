@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Method Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #4CAF50;
+        }
+        
+        #queryString {
+            font-size: 1.2em;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Generate Query String</h1>
+    <div id="queryString"></div>
+
+
+    
+    <script >
+        const parameters = [
+    'name=Alice',
+    'age=25',
+    'city=New+York',
+    'profession=Developer'
+];
+
+function generateQueryString() {
+    const queryStringElement = document.getElementById('queryString');
+    const queryString = parameters.join('&');
+
+    queryStringElement.textContent = `Generated Query String: ?${queryString}`;
+}
+
+generateQueryString();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Method Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #4CAF50;
+        }
+        
+        #namesList {
+            font-size: 1.2em;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Names List</h1>
+    <div id="namesList"></div>
+    <script >
+
+        const names = ['Alice', 'Bob', 'Charlie', 'David', 'Eve'];
+
+        const displayName =()=>{
+            const namesList = document.getElementById('namesList');
+const joinedNames =names.join(",   ");
+
+namesList.textContent=`Names: ${joinedNames}`
+        }
+
+        displayName()
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Sorting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .product-list {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .product-list li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product List</h1>
+    <button onclick="sortProducts('asc')">Sort by Price: Low to High</button>
+    <button onclick="sortProducts('desc')">Sort by Price: High to Low</button>
+    
+    <ul id="productList" class="product-list"></ul>
+
+    <script>
+        const products = [
+            { name: 'Laptop', price: 999.99 },
+            { name: 'Smartphone', price: 499.99 },
+            { name: 'Tablet', price: 299.99 },
+            { name: 'Headphones', price: 89.99 }
+        ];
+
+        function displayProducts() {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = ''; // Clear previous list
+            products.forEach(product => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${product.name}: $${product.price.toFixed(2)}`;
+                productList.appendChild(listItem);
+            });
+        }
+
+        function sortProducts(order) {
+            products.sort((a, b) => {
+                if (order === 'asc') {
+                    return a.price - b.price;
+                } else if (order === 'desc') {
+                    return b.price - a.price;
+                }
+                return 0;
+            });
+            displayProducts();
+        }
+
+        displayProducts();
+    </script>
+</body>
+</html>
