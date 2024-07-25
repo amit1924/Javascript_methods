@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+            padding: 20px;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .clock {
+            font-size: 5em;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            background-color: #5d0d7a;
+            
+            color: rgb(37, 12, 174);
+        }
+    </style>
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <div id="clock" class="clock"></div>
+
+    <script>
+        const updateClock =()=>{
+            const clock =document.getElementById("clock");
+
+            const now =new Date();
+            console.log(now);
+            const hours =String(now.getHours())
+          
+            const minutes = String(now.getMinutes())
+            const seconds = String(now.getSeconds())
+            clock.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateClock, 1000); 
+        updateClock();
+    </script>
+</body>
+</html>
+
+
+<!-- In the digital clock example, converting numbers to strings is essential for applying string-specific methods like padStart: -->
+
+<!-- The padStart method in JavaScript is used to pad the current string with another string (repeated, if needed) so that the resulting string reaches a given length. Padding is applied from the start (left) of the current string.
+
+Syntax
+str.padStart(targetLength [, padString]) -->
+
+<!-- 
+Example 1: Formatting Numbers
+javascript
+
+const num = '5';
+const paddedNum = num.padStart(2, '0');
+console.log(paddedNum); // Output: "05"
+Example 2: Aligning Text
+javascript
+
+const str = 'hello';
+const paddedStr = str.padStart(10, '*');
+console.log(paddedStr); // Output: "*****hello"
+
+Example 3: Fixed-Length Strings
+javascript
+
+const id = '123';
+const paddedId = id.padStart(8, '0');
+console.log(paddedId); // Output: "00000123" -->

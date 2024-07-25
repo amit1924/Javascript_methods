@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .notification {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin: 20px auto;
+            border-radius: 5px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notification Example</h1>
+    <div id="notification" class="notification">
+        This is your notification!
+    </div>
+    <button onclick="showNotification()">Show Notification using setTimeOut</button>
+
+    <script>
+        const showNotification=()=>{
+            setTimeout(() => {
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+            }, 3000); 
+        }
+       
+    </script>
+</body>
+</html>

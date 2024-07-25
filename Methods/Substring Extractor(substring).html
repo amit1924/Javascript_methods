@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Substring Extractor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Substring Extractor</h1>
+    <input type="text" id="inputString" placeholder="Enter a string">
+    <input type="number" id="startIndex" placeholder="Start index">
+    <input type="number" id="endIndex" placeholder="End index">
+    <button onclick="extractSubstring()">Extract Substring</button>
+    <div id="result" class="result"></div>
+
+    <script>
+        const extractSubstring =()=>{
+            const inputString = document.getElementById('inputString').value;
+            const startIndex = parseInt(document.getElementById('startIndex').value, 10);
+            const endIndex = parseInt(document.getElementById('endIndex').value, 10);
+            const result = document.getElementById('result');
+
+            if(isNaN(startIndex) || isNaN(endIndex) || startIndex<0 ||endIndex>inputString.length || startIndex>=endIndex){
+
+                result.textContent = 'Invalid indices. Please ensure indices are within the string length and start index is less than end index.';
+            }
+
+            const substring = inputString.substring(startIndex, endIndex);
+            result.textContent = `Extracted substring: "${substring}"`;
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display User Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .user-container {
+            max-width: 600px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 20px;
+        }
+        .user {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .user:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Data</h1>
+    <div id="jsonString">
+       
+       
+    </div>
+    <div id="userContainer" class="user-container"></div>
+    <button onclick="displayUserData()">Convert Json string into array of object</button>
+
+    <script>
+        const jsonData = `
+        [
+            {"name": "John Doe", "age": 30, "email": "john.doe@example.com"},
+            {"name": "Jane Smith", "age": 25, "email": "jane.smith@example.com"}
+        ]`;
+
+const jsonString =document.getElementById("jsonString");
+jsonString.innerHTML=`<h3>${jsonData}</h3>`
+
+        const displayUserData =()=>{
+            const users =JSON.parse(jsonData);
+            const userContainer = document.getElementById('userContainer');
+            users.forEach(user=>{
+                const userDiv =document.createElement('div');
+                userDiv.classList.add('user')
+                userDiv.innerHTML = `<h2>${user.name}</h2>
+                                     <p>Age: ${user.age}</p>
+                                     <p>Email: ${user.email}</p>`;
+                userContainer.appendChild(userDiv);
+            })
+        }
+    </script>
+</body>
+</html>
+
+<!-- The JSON.parse(jsonData) method converts the JSON string into a JavaScript array of objects. -->

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul id="taskList"></ul>
+    <button onclick="updateTasks()">Update Task Status(map)</button>
+    <button onclick="logTasks()">Log Task Status(forEach)</button>
+<ul id="logTasks"></ul>
+    <script>
+        const tasks = [
+    { id: 1, name: 'Complete homework', completed: false },
+    { id: 2, name: 'Buy groceries', completed: true },
+    { id: 3, name: 'Go for a walk', completed: false },
+    { id: 4, name: 'Read a book', completed: true }
+];
+
+const displayTasks =(tasksList)=>{
+    const listElement = document.getElementById('taskList');
+    listElement.innerHTML = ''; // Clear existing tasks
+    tasksList.forEach((task)=>{
+        const listItem = document.createElement('li');
+        listItem.textContent = task.name;
+        if(task.completed){
+            listItem.classList.add('completed');
+        }
+        listElement.appendChild(listItem);
+    })
+}
+
+// Function to update task statuses using map
+
+const updateTasks =()=>{
+    const updatedTasks =tasks.map(task=>{
+        return {...task,completed:!task.completed}
+    })
+
+    displayTasks(updatedTasks)
+}
+
+const logTasks =()=>{
+    tasks.forEach(task=>{
+const logTasksList =document.getElementById('logTasks')
+const list=document.createElement('li')
+
+if(task.completed===true){
+    list.textContent = task.name
+}else{
+    list.textContent="this is false value that's why task name can't  be shown"
+}
+logTasksList.appendChild(list)
+
+    })
+}
+
+
+// Initial display of tasks
+displayTasks(tasks);
+    </script>
+</body>
+</html>

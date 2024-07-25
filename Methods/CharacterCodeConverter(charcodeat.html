@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Code Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Character Code Converter</h1>
+    <input type="text" id="inputString" placeholder="Enter a string">
+    <button onclick="convertToCharCode()">Get Character Codes</button>
+    <div id="result" class="result"></div>
+
+    <script >
+  const convertToCharCode=()=>{
+    const input = document.getElementById('inputString').value;
+    const result = document.getElementById('result');
+    const charCodes = [];
+
+    for(let i =0; i<input.length; i++){
+  charCodes.push(`${input[i]}:${input.charCodeAt(i)}`);
+    }
+result.innerHTML = charCodes.join(`<br>`)
+  }
+
+    </script>
+</body>
+</html>

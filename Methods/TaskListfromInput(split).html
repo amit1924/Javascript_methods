@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List from Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .input-container {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task List from Input</h1>
+    <div class="input-container">
+        <input type="text" id="taskInput" placeholder="Enter comma-separated tasks">
+        <button onclick="createTaskList()">Create Task List</button>
+    </div>
+    <ul id="taskList"></ul>
+
+   <script>
+    const createTaskList =()=>{
+        const input =document.getElementById("taskInput");
+      
+        const taskInput =input.value
+        const tasks =taskInput.split(",");
+        console.log(tasks);
+        input.value = ""
+       
+
+        const taskList =document.getElementById("taskList");
+        taskList.innerHTML = ""
+
+        tasks.forEach((task)=>{
+      const listItem =document.createElement("li");
+      listItem.textContent = task.trim()
+      taskList.appendChild(listItem)
+        })
+       
+    }
+   </script>
+</body>
+</html>
+
+
+<!-- suppose i type Amit kumar in input box then console result
+ ['amit kumar']0: "amit kumar"length: 1[[Prototype]]: Array(0)
+-->
+
+<!-- suppose i type amit,kumar in input box
+then result is 
+2) ['amit ', 'kumar']0: "amit "1: "kumar"length: 2[[Prototype]]: Array(0) 
+-->
+
+<!-- The split(',') method splits the input string into an array of substrings, using the comma , as the delimiter.
+ 
+This is useful for converting a single string of comma-separated values into an array, which can then be easily manipulated or displayed. -->
