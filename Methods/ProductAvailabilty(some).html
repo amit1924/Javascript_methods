@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Availability Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .product-list {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .product-list li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Availability Checker</h1>
+    <ul id="productList" class="product-list"></ul>
+  
+    <button onclick="displayProducts()">Display Products</button>
+    <button id="stock-btn">Check Availability</button>
+
+   <script>
+    const products = [
+    { name: 'Laptop', inStock: true },
+    { name: 'Smartphone', inStock: false },
+    { name: 'Tablet', inStock: true },
+    { name: 'Headphones', inStock: false }
+];
+
+const displayProducts =()=>{
+    const productList = document.getElementById('productList');
+            products.forEach(product => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${product.name} - ${product.inStock ? 'In Stock' : 'Out of Stock'}`;
+                productList.appendChild(listItem);
+
+                setTimeout(()=>{
+                   
+                    productList.removeChild(listItem);
+                },4000)
+                
+            });
+
+  
+}
+
+
+const stockButton =document.getElementById('stock-btn')
+stockButton.addEventListener('click',()=>{
+     products.some((product)=>{
+        if(product.inStock && product.name==="Laptop"){
+            alert("Laptop is Available")
+        }
+        else if(product.inStock && product.name==="Tablet"){
+            setTimeout(()=>{
+                alert("Tablet is Available")
+            },2000)
+            
+        }
+        
+       else{
+           setTimeout(()=>{
+            alert("I am showing you all products ")
+            displayProducts()
+           },5000)
+        }
+     });
+});
+
+        
+  
+
+
+   </script>
+</body>
+</html>

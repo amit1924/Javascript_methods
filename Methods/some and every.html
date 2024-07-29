@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Pass Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .result {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Pass Checker</h1>
+    <div id="results"></div>
+
+    <script>
+        const students = [
+            { name: 'Alice', score: 85 },
+            { name: 'Bob', score: 58 },
+            { name: 'Charlie', score: 90 },
+            { name: 'David', score: 72 },
+            { name: 'Eve', score: 88 }
+        ];
+
+        const passThreshold = 60;
+
+        const somePassed = students.some(student => student.score >= passThreshold);
+        const allPassed = students.every(student => student.score >= passThreshold);
+        console.log(allPassed);//false
+
+        const resultsDiv = document.getElementById('results');
+
+        const somePassedMessage = somePassed
+            ? 'Some students have passed.'
+            : 'No students have passed.';
+        const allPassedMessage = allPassed
+            ? 'All students have passed.'
+            : 'Not all students have passed.';
+
+        resultsDiv.innerHTML = `
+            <p class="result">${somePassedMessage}</p>
+            <p class="result">${allPassedMessage}</p>
+        `;
+    </script>
+</body>
+</html>
+
+
+<!-- some() returns true if at least one element passes the test.
+every() returns true only if all elements pass the test. -->
